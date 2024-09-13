@@ -6,9 +6,12 @@ def safe_print_list(my_list=[], x=0):
         return None
     if x == 0:
         return 0
+    
     try:
-        while a < len(my_list) and a < x :
-            print(my_list[a], end="")
+        for elem in my_list:
+            if a >= x:
+                break
+            print(elem, end="")
             a += 1
         print()
         return a
