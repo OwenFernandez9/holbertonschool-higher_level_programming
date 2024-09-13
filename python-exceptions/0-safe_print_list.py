@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 
 def safe_print_list(my_list=[], x=0):
-    if x < 0:
+    if not my_list:
+        return None
+    if x == 0:
         return 0
     try:
         for a in range(x):
@@ -10,4 +12,4 @@ def safe_print_list(my_list=[], x=0):
         return a + 1
     except Exception:
         print()
-        return a
+        return None
