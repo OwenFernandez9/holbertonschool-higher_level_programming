@@ -8,4 +8,4 @@ class Square:
     """
     Represents a square.
     """
-    pass
+    __dict__ = {}
