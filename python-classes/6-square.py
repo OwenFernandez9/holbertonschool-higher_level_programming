@@ -46,6 +46,8 @@ class Square:
         self.__position = value
 
     def my_print(self):
+        if self.__size == 0:
+            return
         for a in range(self.__position[1]):
             print()
         for b in range(self.__size):
