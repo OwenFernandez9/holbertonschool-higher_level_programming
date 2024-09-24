@@ -1,6 +1,6 @@
 >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
->>> g = BaseGeometry
+>>> g = BaseGeometry()
 
 
 >>> g.area()
@@ -17,6 +17,6 @@ ValueError: name must be greater than 0
 Traceback (most recent call last):
 ValueError: name must be greater than 0
 
->>> g.integer_validator("name", "value")
+>>> g.integer_validator("name", "str")
 Traceback (most recent call last):
 TypeError: name must be an integer
