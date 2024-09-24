@@ -28,6 +28,8 @@ class Rectangle(Shape):
 
 class Circle(Shape):
     def __init__(self, radius):
+        if radius < 0:
+            radius = abs(radius)
         self.radius = radius
 
     def area(self):
