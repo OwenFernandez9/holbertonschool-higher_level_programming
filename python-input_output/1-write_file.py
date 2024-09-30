@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-in te module declarated the function write_file
+in the module the write_file function is declared
 """
 
 
