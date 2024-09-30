@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-in te module declarated the function read_file
+in the module the read_file function is declared
 """
 
 
