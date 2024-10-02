@@ -19,7 +19,8 @@ class Student:
                 "first_name": self.first_name,
                 "last_name": self.last_name,
                 "age": self.age
-        }
+            }
         elif isinstance(attrs, list):
-            return {key: value for key, value in self.__dict__.items() if key in attrs}
+            return {key: value for key, value in self.__dict__.items()
+                    if key in attrs}
         return {}
