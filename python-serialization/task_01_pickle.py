@@ -16,9 +16,11 @@ class CustomObject:
     def serialize(self, filename):
         try:
             with open(filename, 'wb') as file:
-                pickle.dump(self, file)
+                return pickle.dump(self, file)
+
         except EOFError:
             raise ("Ran out of input")
+            return None
 
 
     @classmethod
