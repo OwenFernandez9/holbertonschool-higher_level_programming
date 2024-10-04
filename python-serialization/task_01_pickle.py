@@ -18,7 +18,7 @@ class CustomObject:
             pickle.dump(self, file)
 
     @classmethod
-    def deserialize(cls,filename):
+    def deserialize(cls, filename):
         with open(filename, 'rb') as file:
             a = pickle.load(file)
             return a
