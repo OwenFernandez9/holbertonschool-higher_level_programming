@@ -4,13 +4,13 @@ import requests
 
 def fetch_and_print_posts():
     posts = requests.get("https://jsonplaceholder.typicode.com/posts/")
-    print(posts.status_code)
+    print("Status Code: {}".format(posts.status_code))
 
     if posts.status_code == 200:
         p = posts.json()
 
         for post in p:
-            print("Status Code: {}".format(post['title']))
+            print(post['title'])
 
 
 def fetch_and_save_posts():
