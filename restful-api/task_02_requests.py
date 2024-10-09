@@ -30,6 +30,6 @@ def fetch_and_save_posts():
         estruct_posts.append(new_post)
 
     with open('posts.csv', 'w') as file:
-        writer = csv.DictWriter(file, filednames=['id', 'title', 'body'])
+        writer = csv.DictWriter(file, fieldnames=['id', 'title', 'body'])
         writer.writerheader()
         writer.writerows(estruct_posts)
