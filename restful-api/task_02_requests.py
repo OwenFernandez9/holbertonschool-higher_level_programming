@@ -18,6 +18,8 @@ def fetch_and_save_posts():
     posts = requests.get("https://jsonplaceholder.typicode.com/posts/")
     if posts.status_code == 200:
         p = posts.json()
+    else:
+        return
 
     estruct_posts = []
 
