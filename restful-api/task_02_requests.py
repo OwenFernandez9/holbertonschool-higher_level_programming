@@ -10,7 +10,7 @@ def fetch_and_print_posts():
         p = posts.json()
 
         for post in p:
-            print(post['title'])
+            print("Status Code: {}".format(post['title']))
 
 
 def fetch_and_save_posts():
