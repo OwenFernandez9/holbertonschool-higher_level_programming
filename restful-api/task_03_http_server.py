@@ -18,7 +18,7 @@ class Server(http.server.BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(json_data.encode('utf-8'))
         else:
-            self.response_send(404)
+            self.send_response(404)
             self.wfile.write(b'Endpoint not found')
 
 def run(server_class=http.server.HTTPServer, handler_class=Server):
