@@ -24,7 +24,7 @@ class Server(http.server.BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(b'Endpoint not found')
 
-    def run(server_class=http.server.HTTPServer, handler_class=Server):
-        server_address = ('', 8000)
-        httpd = server_class(server_address, handler_class)
-        httpd.serve_forever()
+def run(server_class=http.server.HTTPServer, handler_class=Server):
+    server_address = ('', 8000)
+    httpd = server_class(server_address, handler_class)
+    httpd.serve_forever()
