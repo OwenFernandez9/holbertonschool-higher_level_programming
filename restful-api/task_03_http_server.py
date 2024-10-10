@@ -3,7 +3,7 @@ import http.server
 import json
 
 
-def Server(http.server.BaseHTTPRequestHandler):
+class Server(http.server.BaseHTTPRequestHandler):
     def do_GET(self):
         if self.path == '/data':
             data = {
@@ -18,7 +18,8 @@ def Server(http.server.BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(json_data.encode('utf-8'))
         else:
-            self.response(404, 'Not Found')
+            self.response_send(404)
+            self.send_header('Content-type', 'text/plain')
             self.end_headers()
             self.wfile.write(b'Endpoint not found')
 
