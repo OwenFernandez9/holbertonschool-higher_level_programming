@@ -32,16 +32,17 @@ def get_user(username):
 @app.route("/add_user", methods=["POST"])
 def post_user():
     create = request.get_json()
-    new_user = create['username']
+    new_user = create.get('username')
     new_name = create['name']
     new_age = create['age']
     new_city = create['city']
-    if type(create) is not str:
-        return jsonfy({"error": "User not found"})
+
+    if not isinstance(new_user, str):
+        return jsonify({"error": "Username is required"}), 400
     
     users[new_user] = {"username": new_user, "name": new_name, "age": new_age, "city": new_city}
 
-    message = {"message": "user added", "user": users[create]}
+    message = {"message": "user added", "user": users[new_user]}
     return jsonify(message)
 
 if __name__ == "__main__":
