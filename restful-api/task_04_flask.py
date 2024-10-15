@@ -28,7 +28,7 @@ def stats():
 def get_user(username):
     infouser = users.get(username)
     if infouser is None:
-        return {"error": "User not found"}
+        return jsonify({"error": "User not found"}), 404
     return jsonify(infouser)
 
 @app.route("/add_user", methods=["POST"])
@@ -39,9 +39,11 @@ def post_user():
     new_age = create['age']
     new_city = create['city']
 
-    if not isinstance(new_user, str) or users:
+    if not isinstance(new_user, str) or new_user == "":
         return jsonify({"error": "Username is required"}), 400
     
+    if new_user in users:
+        return jsonify({"error": "Username already exists"}), 400
 
     users[new_user] = {"username": new_user, "name": new_name, "age": new_age, "city": new_city}
 
