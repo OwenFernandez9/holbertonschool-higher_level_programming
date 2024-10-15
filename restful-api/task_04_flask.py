@@ -43,11 +43,11 @@ def post_user():
         return jsonify({"error": "Username is required"}), 400
     
     if new_user in users:
-        return jsonify({"error": "Username already exists"}), 400
+        return jsonify({"error": "Username already exists"}), 409
 
     users[new_user] = {"username": new_user, "name": new_name, "age": new_age, "city": new_city}
 
-    message = {"message": "user added", "user": users[new_user]}
+    message = {"message": "User added", "user": users[new_user]}
     return jsonify(message)
 
 if __name__ == "__main__":
