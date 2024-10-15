@@ -11,7 +11,9 @@ def home():
     return "Welcome to the Flask API!"
 
 
-users = {"jane": {"name": "Jane", "age": 28, "city": "Los Angeles"}}
+users = {
+    
+}
 
 @app.route("/data")
 def get_usernames():
