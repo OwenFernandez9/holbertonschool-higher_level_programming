@@ -24,10 +24,10 @@ def verify_password(username, password):
     if username in users and check_password_hash(users[username]['password'], password):
         return username
 
-@app.route('/')
+@app.route('/basic-protected')
 @auth.login_required
 def index():
-    return jsonify("Hello, {}!".format(auth.current_user()))
+    return "Basic Auth: Access Granted", 200
 
 app.config['JWT_SECRET_KEY'] = 'secret_key'
 jwt = JWTManager(app)
@@ -42,24 +42,24 @@ def login():
     if user and check_password_hash(user['password'], password):
         access_token = create_access_token(identity={"username": username, "role": user['role']})
         return {'access_token': access_token}, 200
-    return jsonify({"error": "Invalid credentials"}), 401
+    return {"error": "Invalid credentials"}, 401
 
 
 @app.route('/jwt-protected')
 @jwt_required()
 def jwt_protected():
-    return jsonify({"msg": "JWT Auth: Access Granted"}), 200
+    return "JWT Auth: Access Granted", 200
 
-@app.route('/admin')
+@app.route('/admin-only')
 @jwt_required()
 def admin():
     current_user = get_jwt_identity()
     role = current_user['role']
     
     if role != 'admin':
-        return jsonify({"error": "Admin access required"}), 401
+        return {"error": "Admin access required"}, 403
     
-    return jsonify({"msg": "Admin Access: Granted"}), 200
+    return "Admin Access: Granted", 200
 
 @jwt.unauthorized_loader
 def handle_unauthorized_error(err):
