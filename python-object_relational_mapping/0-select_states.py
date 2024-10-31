@@ -1,9 +1,14 @@
 #!/usr/bin/python3
-
+"""
+module
+"""
 import MySQLdb
 import sys
 
 if __name__ == "__main__":
+    """
+    module
+    """
     mysql_username = sys.argv[1]
     mysql_password = sys.argv[2]
     database_name = sys.argv[3]
