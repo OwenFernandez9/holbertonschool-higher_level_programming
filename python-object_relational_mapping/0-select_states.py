@@ -11,7 +11,12 @@ if __name__ == "__main__":
     db = MySQLdb.connect(host="localhost", port=3306, user=mysql_username, password=mysql_password, database=database_name)
     cur: MySQLdb.cursors.Cursor = db.cursor()
 
-    cur.execute("SELECT * FROM states ORDER BY id ASC")
+    cur.execute("""
+        SELECT MIN(id), name 
+        FROM states 
+        GROUP BY name 
+        ORDER BY MIN(id) ASC;
+    """)
 
     for row in cur.fetchall():
         print(row)
